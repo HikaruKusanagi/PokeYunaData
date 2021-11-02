@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:pokemon_app/bar/bar_model.dart';
+import 'package:pokemon_app/notification/notification_page.dart';
+import 'package:pokemon_app/overbord_page.dart';
+import 'package:pokemon_app/pokemonlist/pokemon_page.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+
+
+class BarPage extends StatelessWidget {
+
+  final currentTab = [
+    const PokemonPage(),
+    const NotificationPage(),
+  ];
+
+  final List<String> _tabNames = ['キャラクター','お知らせ',];
+
+  BarPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _showTutorial(context));
+    return ChangeNotifierProvider<BarModel>(
+        create: (_) => BarModel(),
+    child: Consumer<BarModel>(
+    builder: (context, model, child) {
+      return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
+          title: const Text('ユナイトデータ'),
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: currentTab[model.currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: model.currentIndex,
+          type: BottomNavigationBarType.fixed,
+          fixedColor: Colors.deepPurple,
+          backgroundColor: Colors.orangeAccent,
+          onTap: (index) {
+            model.onTabTapped(index);
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.catching_pokemon),
+              label: _tabNames[0],
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.info),
+              label: _tabNames[1],
+            ),
+          ],
+        ),
+      );
+    }),
+    );
+  }
+}
+
+
+void _showTutorial(BuildContext context) async {
+  final pref = await SharedPreferences.getInstance();
+
+  if (pref.getBool('isAlreadyFirstLaunch') != true) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OverboardPage(),
+        fullscreenDialog: true,
+      ),
+    );
+    pref.setBool('isAlreadyFirstLaunch', true);
+  }
+}
