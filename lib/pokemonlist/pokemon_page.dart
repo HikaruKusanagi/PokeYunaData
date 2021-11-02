@@ -13,7 +13,7 @@ class PokemonPage extends StatelessWidget {
           flexibleSpace: Container(
             decoration: const BoxDecoration(),
           ),
-          title: const Text('キャラクター一覧'),
+          title: const Text('キャラクター'),
           centerTitle: false,
         ),
         body: ListView.builder(
