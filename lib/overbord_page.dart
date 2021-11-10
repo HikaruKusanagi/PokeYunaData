@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_overboard/flutter_overboard.dart';
 
 class OverboardPage extends StatelessWidget {
+  OverboardPage({Key? key}) : super(key: key);
+
 
 
   @override
@@ -33,7 +35,7 @@ class OverboardPage extends StatelessWidget {
         color: Colors.deepPurple,
         imageAssetPath: 'assets/ポケモンデータ詳細.png',
         title: 'コンセプト',
-        body: 'ポケモンユナイトに登場する\n全てのポケモンの基礎データを\n即座に確認可能！',
+        body: 'ゲームに登場する\n全ての基礎データを\n即座に確認可能！',
         doAnimateImage: true),
     PageModel.withChild(
         child: const Padding(

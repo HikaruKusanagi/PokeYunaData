@@ -18,6 +18,7 @@ class BarPage extends StatelessWidget {
 
   final List<String> _tabNames = ['キャラクター','お知らせ',];
 
+  //Widgetのコンストラクタに必ずkeyを入れる
   BarPage({Key? key}) : super(key: key);
 
   @override
@@ -30,19 +31,23 @@ class BarPage extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          title: const Text('ユナイトデータ'),
+          title: const Text('ポケユナデータ'),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
             ),
           ),
           centerTitle: true,
         ),
+
+
+        //currentIndex:現在、選択されているindex。このindexのアイコンが選択状態になる
         body: currentTab[model.currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: model.currentIndex,
           type: BottomNavigationBarType.fixed,
           fixedColor: Colors.deepPurple,
           backgroundColor: Colors.orangeAccent,
+          //アイコンをタップしたときの処理。
           onTap: (index) {
             model.onTabTapped(index);
           },

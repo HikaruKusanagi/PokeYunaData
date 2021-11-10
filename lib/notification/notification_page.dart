@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
+
+  //Widgetのコンストラクタに必ずkeyを入れる
   const NotificationPage({Key? key}) : super(key: key);
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class NotificationPage extends StatelessWidget {
             Row(
               children: const [
                 Text(
-                  '「ユナイトデータ」を\nダウンロードしていただき\nありがとうございます。',
+                  '「ポケユナデータ」を\nダウンロードしていただき\nありがとうございます。',
                   style: TextStyle(fontSize: 20),
                 ),
               ],

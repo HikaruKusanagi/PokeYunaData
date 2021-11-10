@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class PokemonDetailPage extends StatelessWidget {
   final String pokemonname;
-  final String img;
+
 
   //攻撃
   final String attack1;
@@ -77,7 +77,6 @@ class PokemonDetailPage extends StatelessWidget {
 
   const PokemonDetailPage({Key? key,
     required this.pokemonname,
-    required this.img,
 
     //攻撃
     required this.attack1,
@@ -170,7 +169,7 @@ class PokemonDetailPage extends StatelessWidget {
               ),
               Row(
                 children: [
-                  const SizedBox(width: 130),
+                  const SizedBox(width: 110),
                   Column(
                     children: [
                       Row(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BarModel extends ChangeNotifier {
-
   int _currentIndex = 0;
   get currentIndex => _currentIndex;
 
@@ -9,5 +8,6 @@ class BarModel extends ChangeNotifier {
     _currentIndex = index;
 
     notifyListeners();
+
   }
 }
