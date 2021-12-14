@@ -1,13 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/bar/bar_page.dart';
+import 'package:pokemon_app/bottomnavigationbar/bottom_navigation_bar.dart';
 
-//ここからアプリが起動
-//void とは　戻り値がないと分かっている場合に使うデータ型である。(日本語で)
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ユナイトデータ',
+      title: 'ポケユナデータ',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: BarPage(),
+      home: BottomNavigationBarPage(),
     );
   }
 }

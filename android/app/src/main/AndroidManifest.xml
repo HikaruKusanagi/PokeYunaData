@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pokemon.pokemon_unite">
    <application
-        android:label="ユナイトデータ"
+        android:label="ポケユナデータ"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

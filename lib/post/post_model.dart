@@ -1,23 +1,39 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/domain/comments.dart';
 
-class PokemonDetailModel extends ChangeNotifier {
-
+class PostModel extends ChangeNotifier {
   List<Comments>? comments;
-
-  bool isLoading = false;
-
   //?はnullが入っていてもいいよ
   String? content;
-  String? email;
+  String? playerName;
   String? name;
-  String? pokemonName;
+  String? email;
   String? pokemonId;
 
+  Future addContent() async {
 
+    if (content == null || content == "") {
+      throw '入力してください';
+    }
+
+    // firestoreに追加
+    await FirebaseFirestore.instance.collection('comments').add({
+      'content': content,
+      'name' : name,
+      'pokemonId' : pokemonId,
+    });
+  }
+  void fetchUser() async {
+
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    final snapshot =
+    await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final data = snapshot.data();
+    this.name = data?['name'];
+    notifyListeners();
+  }
 
   void fetchComments(String pokemonName) async {
     final QuerySnapshot snapshot =
@@ -37,17 +53,5 @@ class PokemonDetailModel extends ChangeNotifier {
     this.comments = comments;
     notifyListeners();
   }
-
-  void fetchUser() async {
-    final user = FirebaseAuth.instance.currentUser;
-    this.email = user?.email;
-
-    final uid = FirebaseAuth.instance.currentUser!.uid;
-    final snapshot =
-    await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    final data = snapshot.data();
-    this.name = data?['name'];
-
-    notifyListeners();
-  }
 }
+

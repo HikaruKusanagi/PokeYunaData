@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {
-
-  //Widgetのコンストラクタに必ずkeyを入れる
   const NotificationPage({Key? key}) : super(key: key);
 
 
