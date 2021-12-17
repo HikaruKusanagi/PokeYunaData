@@ -9,9 +9,6 @@ import 'package:provider/provider.dart';
 
 class MyPage extends StatelessWidget {
 
-
-  MyPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MyModel>(
@@ -32,7 +29,7 @@ class MyPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) =>
                             //nullじゃないと確定させるために!を使う必要がある
-                                EditPage(model.name!, model.description!),
+                                EditPage(model.name!, model.oftenUsePokemon!,model.timeToPlay!),
                           ),
                         );
                         model.fetchUser();
@@ -55,7 +52,7 @@ class MyPage extends StatelessWidget {
                           children: [
                             Icon(EvaIcons.person,color: Colors.brown),Text('プレイヤーネーム'),
                             SizedBox(width: 110),
-                            Text(model.name ??'ななし',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            Text(model.name ??'ななし',style: TextStyle(fontWeight: FontWeight.bold,),
                             ),
                           ],
                         ),
@@ -69,11 +66,18 @@ class MyPage extends StatelessWidget {
                         Row(
                           children: [
                             Icon(Icons.catching_pokemon,color: Colors.deepOrangeAccent,),Text('よくつかうポケモン'),
-                            SizedBox(width: 60),
-                            Text(model.description ??'未入'),
+                            SizedBox(width: 80),
+                            Text(model.oftenUsePokemon ??'未入'),
                           ],
                         ),
-
+                        Row(
+                          children: [
+                            Icon(Icons.schedule,color: Colors.indigoAccent),
+                            Text('プレイする時間帯'),
+                            SizedBox(width: 120),
+                            Text(model.timeToPlay ??'未入'),
+                          ],
+                        ),
                         TextButton(
                           child: Text('ログアウト',style: TextStyle(
                               fontWeight: FontWeight.bold,

@@ -1,5 +1,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:pokemon_app/contentuser/content_user_page.dart';
 import 'package:pokemon_app/domain/comments.dart';
 import 'package:pokemon_app/pokemonlist/pokemon_detail_page.model.dart';
 import 'package:pokemon_app/pokemonlist/waza_detail_page.dart';
@@ -9,7 +10,7 @@ import 'package:provider/provider.dart';
 class PokemonDetailPage extends StatelessWidget {
 
   // イニシャライザ
-  PokemonDetailPage(this.pokemonName,this.range);
+  PokemonDetailPage(this.pokemonName,this.range,);
 
   final String pokemonName;
   final String range;
@@ -18,7 +19,7 @@ class PokemonDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<PokemonDetailModel>(
-      create: (_) => PokemonDetailModel()..fetchComments(pokemonName)..fetchUser(),
+      create: (_) => PokemonDetailModel()..fetchComments(pokemonName),
       child: Scaffold(
         appBar: AppBar(
           title: Text(pokemonName,style: const TextStyle(
@@ -286,14 +287,22 @@ class PokemonDetailPage extends StatelessWidget {
                                     .map(
                                       (comments) => Card(
                                         child: ListTile(
+                                          onTap: () async {
+                                            await Navigator.push(context,
+                                            MaterialPageRoute(
+                                              builder: (context) => ContentUserPage(comments.name, comments.oftenUsePokemon),
+                                            ),
+                                          );
+                                            },
                                           title: Row(
                                             children: [
-                                              Icon(EvaIcons.person,color: Colors.brown),Text('プレイヤーネーム'),
-                                              SizedBox(width: 110),
-                                              //nullじゃないと確定させるために!を使う必要がある
-                                            Text(comments.name,style: TextStyle(
-                                            fontSize: 15,
-                                                color:Colors.black),)
+                                              Icon(EvaIcons.person,color: Colors.brown),
+                                              Text('プレイヤーネーム'),
+                                              SizedBox(width: 100),
+                                              Text(comments.name,style: TextStyle(
+                                                  fontSize: 15,
+                                                  color:Colors.black),
+                                              ),
                                             ],
                                           ),
                                           subtitle: Row(
@@ -301,7 +310,7 @@ class PokemonDetailPage extends StatelessWidget {
                                               Icon(EvaIcons.edit,color: Colors.red),Text('コメント',style: TextStyle(
                                                   fontSize: 15,
                                                   color:Colors.black),),
-                                              SizedBox(width: 110),
+                                              SizedBox(width: 100),
                                               //nullだった場合何を入れるかを??を使って書く必要がある
                                             Text(comments.content,style: TextStyle(
                                             fontSize: 15,

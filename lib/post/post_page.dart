@@ -12,7 +12,7 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<PostModel>(
-      create:  (_) => PostModel()..fetchUser()..fetchComments(pokemonName),
+      create:  (_) => PostModel()..fetchUser()..addContent(pokemonName),
       child: Scaffold(
         appBar: AppBar(
           title: Text(pokemonName,style: const TextStyle(
@@ -50,13 +50,13 @@ class PostPage extends StatelessWidget {
                       ),
                       onChanged: (text) {
                         model.content = text;
-                      },
+                        },
                     ),
               ),
                     TextButton(
                       onPressed: () async {
                         try {
-                          await model.addContent();
+                          await model.addContent(pokemonName);
                           Navigator.of(context).pop(true);
                         } catch (e) {
                           final snackBar = SnackBar(

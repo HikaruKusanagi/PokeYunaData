@@ -3,15 +3,16 @@ import 'package:pokemon_app/editpage/edit_model.dart';
 import 'package:provider/provider.dart';
 
 class EditPage extends StatelessWidget {
-  EditPage(this.name, this.description);
+  EditPage(this.name,this.oftenUsePokemon, this.timeToPlay);
 
   final String name;
-  final String description;
+  final String oftenUsePokemon;
+  final String timeToPlay;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<EditModel>(
-      create:  (_) => EditModel(name, description),
+      create:  (_) => EditModel(name,oftenUsePokemon,timeToPlay),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('プロフィール編集',style: TextStyle(
@@ -37,13 +38,22 @@ class EditPage extends StatelessWidget {
                         },
                         ),
                         TextField(
-                            controller: model.descriptionController,
+                            controller: model.oftenUsePokemonController,
                             decoration: InputDecoration(
-                                hintText: '自己紹介'
+                                hintText: 'よく使用するポケモン'
                             ),
                             onChanged: (text) {
-                              model.setDescription(text);
+                              model.setOftenUsePokemon(text);
                             },
+                        ),
+                        TextField(
+                          controller: model.timeToPlayController,
+                          decoration: InputDecoration(
+                              hintText: 'プレイする時間帯'
+                          ),
+                          onChanged: (text) {
+                            model.setTimeToPlay(text);
+                          },
                         ),
                         TextButton(
                           onPressed: model.isUpdated()

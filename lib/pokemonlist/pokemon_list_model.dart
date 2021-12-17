@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/domain/pkemon.dart';
+import 'package:pokemon_app/domain/pokemon.dart';
 
 class PokemonListModel extends ChangeNotifier {
   List<Pokemon>? pokemon;
-
 
   void fechPokemonListModel() async {
     final QuerySnapshot snapshot =
@@ -16,7 +15,7 @@ class PokemonListModel extends ChangeNotifier {
       final String name = data['name'];
       final String range = data['range'];
 
-      return Pokemon(name, range);
+      return Pokemon(name,range);
     }).toList();
 
     this.pokemon = pokemon;
@@ -37,7 +36,6 @@ class PokemonListModel extends ChangeNotifier {
       final String range = data['range'];
       return Pokemon(name, range);
     }).toList();
-
     this.pokemon = pokemon;
     notifyListeners();
   }

@@ -15,6 +15,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class BottomNavigationBarPage extends StatelessWidget {
 
+
+
   final currentTab = [
     PokemonListPage(),
     ChatListPage(),
@@ -22,9 +24,6 @@ class BottomNavigationBarPage extends StatelessWidget {
   ];
 
   final List<String> _tabNames = ['キャラクター','チャット','お知らせ',];
-
-  //Widgetのコンストラクタに必ずkeyを入れる
-  BottomNavigationBarPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
