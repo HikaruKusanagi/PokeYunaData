@@ -40,19 +40,40 @@ class ChatListPage extends StatelessWidget {
                       }
                         final List<Widget> widgets = chat
                             .map(
-                              (chat) => Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    width: 200,
-                                    child: Card(
-                                      color: Colors.green,
-                                      child: Text(chat.talk,
-                                      style: TextStyle(fontSize: 15, color:Colors.black)),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              (chat) {
+
+                                if (chat.uid == FirebaseAuth.instance.currentUser!.uid){
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      SizedBox(
+                                        width: 200,
+                                        child: Card(
+                                          color: Colors.green,
+                                          child: Text(chat.talk,
+                                              style: TextStyle(fontSize: 15, color:Colors.black)),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 200,
+                                        child: Card(
+                                          color: Colors.black,
+                                          child: Text(chat.talk,
+                                              style: TextStyle(fontSize: 15, color:Colors.white)),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
+
+
+                              }
                         )
                             .toList();
                         model.fetchTalkUser();
@@ -61,33 +82,6 @@ class ChatListPage extends StatelessWidget {
                         );
                     }),
                   ),
-                  Consumer<ChatListModel>(builder: (context, model, child) {
-                    final List<Chat>? chat = model.chat;
-                    if (chat == null) {
-                      return const CircularProgressIndicator();
-                    }
-                    final List<Widget> widgets = chat
-                        .map(
-                          (chat) => Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 200,
-                            child: Card(
-                              color: Colors.black,
-                              child: Text(chat.talk,
-                                  style: TextStyle(fontSize: 15, color:Colors.white)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                        .toList();
-                    model.fetchTalkUser();
-                    return ListView(
-                      children: widgets,
-                    );
-                  }),
                   Row(
                     children: [
                       Container(
@@ -110,12 +104,12 @@ class ChatListPage extends StatelessWidget {
                       Material(
                         child: Ink(
                           decoration: const ShapeDecoration(
-                            color: Colors.green,
+                            color: Colors.white,
                             shape: CircleBorder(),
                           ),
                           child: IconButton(
                             icon: Icon(Icons.send),
-                            color: Colors.white,
+                            color: Colors.orangeAccent,
                             onPressed: () async {
                               {
                                 await model.addContent(pokemonName);
