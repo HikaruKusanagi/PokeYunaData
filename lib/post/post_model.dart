@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 class PostModel extends ChangeNotifier {
 
   //?はnullが入っていてもいいよ
-  String? content;
+  String? email;
+  String? password;
+  String pokemonId = '';
+  String content = '';
+  String oftenUsePokemon = '';
   String? name;
-  String? pokemonId;
+  String timeToPlay = '';
   String? uid;
-  String? oftenUsePokemon;
+
 
   Future addContent(String pokemonName) async {
     if (content == null || content == "") {
@@ -17,25 +21,23 @@ class PostModel extends ChangeNotifier {
     }
 
     // firestoreに追加
-    await FirebaseFirestore.instance.collection('comments').add({
-      'content': content,
-      'name': name,
-      'pokemonId': pokemonId = pokemonName,
-      'uid': 'テスト',
-      'oftenUsePokemon': 'テスト',
-    });
-
-
-
+      await FirebaseFirestore.instance.collection('comments').add({
+        'content': content,
+        'name': name,
+        'pokemonId': pokemonId = pokemonName,
+        'uid': uid,
+      });
   }
 
   void fetchUser() async {
+    final user = FirebaseAuth.instance.currentUser;
+    this.email = user?.email;
+
     final uid = FirebaseAuth.instance.currentUser!.uid;
-    final snapshot =
-    await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    final snapshot = await FirebaseFirestore.instance.collection('users').doc(uid).get();
     final data = snapshot.data();
     this.name = data?['name'];
+    this.uid = data?['uid'];
     notifyListeners();
   }
 }
-

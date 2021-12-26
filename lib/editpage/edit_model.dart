@@ -33,7 +33,7 @@ class EditModel extends ChangeNotifier {
   }
 
   bool isUpdated() {
-    return name != null || oftenUsePokemon != null;
+    return name != null || oftenUsePokemon != null || timeToPlay != null;
   }
 
   Future update() async {

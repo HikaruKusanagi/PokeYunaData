@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/domain/pokemon.dart';
-import 'package:pokemon_app/pokemonlist/pokemon_detail_page.dart';
+import 'package:pokemon_app/pokemondetail/pokemon_detail_page.dart';
 import 'package:pokemon_app/pokemonlist/pokemon_list_model.dart';
 import 'package:provider/provider.dart';
 

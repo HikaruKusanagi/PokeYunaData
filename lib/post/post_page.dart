@@ -12,7 +12,7 @@ class PostPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<PostModel>(
-      create:  (_) => PostModel()..fetchUser()..addContent(pokemonName),
+      create:  (_) => PostModel()..addContent(pokemonName)..fetchUser(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(pokemonName,style: const TextStyle(
@@ -43,7 +43,7 @@ class PostPage extends StatelessWidget {
                   ),
                     child: TextField(
                       keyboardType: TextInputType.multiline,
-                      maxLength: null,
+                      maxLength: 11,
                       maxLines: null,
                       decoration: InputDecoration(
                         labelText: '入力',

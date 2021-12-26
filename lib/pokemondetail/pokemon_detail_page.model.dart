@@ -11,7 +11,6 @@ class PokemonDetailModel extends ChangeNotifier {
   String? content;
   String? email;
   String? name;
-  String? oftenUsePokemon;
   String? uid;
   String? pokemonId;
 
@@ -28,8 +27,8 @@ class PokemonDetailModel extends ChangeNotifier {
       final String content = data['content'];
       final String name = data['name'];
       final String pokemonId = data['pokemonId'];
-      final String oftenUsePokemon = data['oftenUsePokemon'];
-      return Comments(content,name,pokemonId,oftenUsePokemon,);
+      final String uid = data['uid'];
+      return Comments(content,name,pokemonId,uid,);
     }).toList();
 
     this.comments = comments;

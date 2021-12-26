@@ -9,8 +9,11 @@ class SingUpPageModel extends ChangeNotifier {
   //emailにnullが入っていてもいいよ
   String? email;
   String? password;
-  String description = '';
+  String pokemonId = '';
+  String content = '';
+  String oftenUsePokemon = '';
   String name = '';
+  String timeToPlay = '';
 
   bool isLoading = false;
 
@@ -53,9 +56,22 @@ class SingUpPageModel extends ChangeNotifier {
           'uid': uid,
           'email': email,
           'name': name,
-          'description': description,
+          'timeToPlay' : timeToPlay,
+          'oftenUsePokemon': oftenUsePokemon,
         });
       }
+      // if (user != null) {
+      //   final uid = user.uid;
+      //
+      //   // firestoreに追加
+      //   FirebaseFirestore.instance.collection('comments').add
+      //   ({
+      //     'uid': uid,
+      //     'name': name,
+      //     'pokemonId': pokemonId,
+      //     'content': content,
+      //   });
+      // }
     }
   }
 }

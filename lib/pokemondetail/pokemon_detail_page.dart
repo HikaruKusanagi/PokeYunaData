@@ -1,9 +1,10 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/contentuser/content_user_page.dart';
 import 'package:pokemon_app/domain/comments.dart';
-import 'package:pokemon_app/pokemonlist/pokemon_detail_page.model.dart';
-import 'package:pokemon_app/pokemonlist/waza_detail_page.dart';
+import 'package:pokemon_app/pokemondetail/pokemon_detail_page.model.dart';
+import 'package:pokemon_app/pokemondetail/waza_detail_page.dart';
 import 'package:pokemon_app/post/post_page.dart';
 import 'package:provider/provider.dart';
 
@@ -29,8 +30,9 @@ class PokemonDetailPage extends StatelessWidget {
           ),
           actions: [
           Consumer<PokemonDetailModel>(builder: (context, model, child) {
-            return IconButton(
-              onPressed: () async {
+            if (FirebaseAuth.instance.currentUser != null) {
+              return IconButton(onPressed:
+                  () async {
                 await Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -38,10 +40,12 @@ class PokemonDetailPage extends StatelessWidget {
                   ),
                 );
                 model.fetchComments(pokemonName);
-                },
-              icon: Icon(Icons.edit),
-            );
-          })
+                }, icon: Icon(Icons.edit)
+              );
+            } else {
+              return SizedBox();
+            }
+          }),
           ],
           backgroundColor: Colors.deepPurple,
         ),
@@ -253,7 +257,7 @@ class PokemonDetailPage extends StatelessWidget {
                 ),
                 Row(
                   children: const [
-                    Text('みんなの意見',
+                    Text('みんなの投稿',
                       style: TextStyle(fontSize: 20),
                     ),
                   ],
@@ -290,7 +294,7 @@ class PokemonDetailPage extends StatelessWidget {
                                           onTap: () async {
                                             await Navigator.push(context,
                                             MaterialPageRoute(
-                                              builder: (context) => ContentUserPage(comments.name, comments.oftenUsePokemon),
+                                              builder: (context) => ContentUserPage(comments,pokemonName),
                                             ),
                                           );
                                             },

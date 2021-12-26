@@ -1,18 +1,20 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:pokemon_app/chat/chat_page.dart';
 import 'package:pokemon_app/contentuser/content_user_model.dart';
+import 'package:pokemon_app/domain/comments.dart';
 import 'package:provider/provider.dart';
 
 class ContentUserPage extends StatelessWidget {
-  ContentUserPage(this.uid,this.name);
+  ContentUserPage(this.comments,this.pokemonName);
 
-  final String uid;
-  final String name;
+  final Comments comments;
+  final String pokemonName;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ContentUserModel>(
-      create:  (_) => ContentUserModel()..fetchComments(),
+      create:  (_) => ContentUserModel()..fetchComments(comments),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('ユーザーページ',style: TextStyle(
@@ -33,14 +35,14 @@ class ContentUserPage extends StatelessWidget {
                         Row(
                           children: [
                             Icon(EvaIcons.person,color: Colors.brown),Text('プレイヤーネーム'),
-                            SizedBox(width: 110),
+                            SizedBox(width: 135),
                             Text(model.name ??'未記入',style: TextStyle(fontWeight: FontWeight.bold,),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            Icon(Icons.catching_pokemon,color: Colors.deepOrangeAccent,),Text('よくつかうポケモン'),
+                            Icon(Icons.catching_pokemon,color: Colors.deepOrangeAccent,),Text('よくつかうキャラクター'),
                             SizedBox(width: 80),
                             Text(model.oftenUsePokemon ??'未記入'),
                           ],
@@ -49,7 +51,7 @@ class ContentUserPage extends StatelessWidget {
                           children: [
                             Icon(Icons.schedule,color: Colors.indigoAccent),
                             Text('プレイする時間帯'),
-                            SizedBox(width: 120),
+                            SizedBox(width: 150),
                             Text(model.timeToPlay ??'未記入'),
                           ],
                         ),
@@ -57,7 +59,13 @@ class ContentUserPage extends StatelessWidget {
                           child: Text('チャット',style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20, color: Colors.green)),
-                          onPressed: () async {},
+                          onPressed: () async {
+                            await Navigator.push(context,
+                              MaterialPageRoute(
+                                builder: (context) => ChatListPage(comments,pokemonName),
+                              ),
+                            );
+                            },
                         ),
                       ]),
                 ),

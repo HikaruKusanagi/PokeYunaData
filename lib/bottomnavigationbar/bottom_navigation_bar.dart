@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/bottomnavigationbar/bottom_navigation_bar_model.dart';
-import 'package:pokemon_app/chat/chat_page.dart';
 import 'package:pokemon_app/login/login_page.dart';
 import 'package:pokemon_app/mypage/my_page.dart';
 import 'package:pokemon_app/notification/notification_page.dart';
@@ -19,7 +18,6 @@ class BottomNavigationBarPage extends StatelessWidget {
 
   final currentTab = [
     PokemonListPage(),
-    ChatListPage(),
     NotificationPage(),
   ];
 
