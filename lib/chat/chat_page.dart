@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/chat/chat_model.dart';
@@ -41,7 +40,6 @@ class ChatListPage extends StatelessWidget {
                         final List<Widget> widgets = chat
                             .map(
                               (chat) {
-
                                 if (chat.uid == FirebaseAuth.instance.currentUser!.uid){
                                   return Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -71,8 +69,6 @@ class ChatListPage extends StatelessWidget {
                                     ],
                                   );
                                 }
-
-
                               }
                         )
                             .toList();
@@ -88,6 +84,7 @@ class ChatListPage extends StatelessWidget {
                         width: 345,
                         color: Colors.white,
                         child: TextFormField(
+                          keyboardType: TextInputType.multiline,
                           decoration: const InputDecoration(
                             hintText: 'メッセージを入力してください',
                           ),

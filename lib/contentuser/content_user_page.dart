@@ -62,7 +62,7 @@ class ContentUserPage extends StatelessWidget {
                           onPressed: () async {
                             await Navigator.push(context,
                               MaterialPageRoute(
-                                builder: (context) => ChatListPage(comments,pokemonName),
+                                builder: (context) => ChatListPage(comments,pokemonName,),
                               ),
                             );
                             },

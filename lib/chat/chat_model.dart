@@ -13,7 +13,8 @@ class ChatListModel extends ChangeNotifier {
   String? email;
   String? talk;
   String? pokemonId;
-  String? createdAt;
+  DateTime? createdAt;
+
 
   //Firestoreの値を画面に映す
   void fetchTalkUser() async {
@@ -36,6 +37,16 @@ class ChatListModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // void fetchTalkUser2(Comments comments) async {
+  //   FirebaseFirestore.instance
+  //       .collectionGroup('room')
+  //       .where('uid', isEqualTo: comments)
+  //       .orderBy('createdAt')
+  //       .snapshots();
+  //
+  //   notifyListeners();
+  // }
+
 
   Future addContent(String pokemonName) async {
     if (talk == null || talk == "") {
@@ -49,7 +60,7 @@ class ChatListModel extends ChangeNotifier {
       'name': name,
       'pokemonId': pokemonId = pokemonName,
       'uid': uid,
-      'createdAt': createdAt,
+      'createdAt': DateTime.now(),
     });
   }
 
@@ -65,3 +76,4 @@ class ChatListModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+

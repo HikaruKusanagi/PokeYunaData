@@ -5,3 +5,4 @@ class Comments {
   String pokemonId;
   String uid;
 }
+
