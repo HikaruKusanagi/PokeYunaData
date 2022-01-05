@@ -77,8 +77,29 @@ class PokemonListPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  PokemonDetailPage
-                                    (pokemon.name,pokemon.range),
+                                  PokemonDetailPage(
+                                    pokemon.name,
+                                    pokemon.range,
+                                    pokemon.battleStyle,
+                                    pokemon.classificationOfTechniques,
+                                    pokemon.characteristic,
+                                    pokemon.techniqueSet1,
+                                    pokemon.techniqueSet1no2,
+                                    pokemon.techniqueSet1no3,
+                                    pokemon.techniqueSet2,
+                                    pokemon.techniqueSet2no2,
+                                    pokemon.techniqueSet2no3,
+                                    pokemon.techniqueText1,
+                                    pokemon.techniqueText2,
+                                    pokemon.techniqueText3,
+                                    pokemon.techniqueText4,
+                                    pokemon.techniqueText5,
+                                    pokemon.techniqueText6,
+                                    pokemon.uniteTechnique,
+                                    pokemon.uniteTechniqueText,
+                                    pokemon.coolTime,
+                                    pokemon.features,
+                                  ),
                             )
                         );
                       }

@@ -2,32 +2,29 @@ import 'package:flutter/material.dart';
 
 class WazaPage1 extends StatelessWidget {
 
-  final String damagelv1;
-  final String damagelv2;
-  final String damagelv3;
-
-
   const WazaPage1({Key? key,
 
     required this.damagelv1,
     required this.damagelv2,
     required this.damagelv3,
   }) : super(key: key);
+
+  final String damagelv1;
+  final String damagelv2;
+  final String damagelv3;
+
+
   @override
   Widget build(BuildContext context) => Scaffold(
     body: Row(
       children: [
-
         const SizedBox(width: 10),
         SingleChildScrollView(
           child: Row(
             children: [
               Column(
                 children: [
-                  Text(
-                    damagelv1,
-                    style: const TextStyle(fontSize: 20),
-                  ),
+                  Text(damagelv1,style: const TextStyle(fontSize: 20),),
                   Column(
                     children: [
                       Row(

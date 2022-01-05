@@ -21,7 +21,7 @@ class BottomNavigationBarPage extends StatelessWidget {
     NotificationPage(),
   ];
 
-  final List<String> _tabNames = ['キャラクター','チャット','お知らせ',];
+  final List<String> _tabNames = ['キャラクター','お知らせ',];
 
   @override
   Widget build(BuildContext context) {
@@ -88,12 +88,8 @@ class BottomNavigationBarPage extends StatelessWidget {
               label: _tabNames[0],
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.chat),
-              label: _tabNames[1],
-            ),
-            BottomNavigationBarItem(
               icon: const Icon(Icons.info),
-              label: _tabNames[2],
+              label: _tabNames[1],
             ),
           ],
         ),

@@ -4,9 +4,6 @@ class NotificationPage extends StatelessWidget {
   const NotificationPage({Key? key}) : super(key: key);
 
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +29,7 @@ class NotificationPage extends StatelessWidget {
             Row(
               children: const [
                 Text(
-                  '今後の実装内容はユーザーの\nダウンロード数や意見など\n拝見し、アプリを成長させる\n方針です。',
+                  '今後の実装内容はユーザーの\nダウンロード数や意見など拝見し、\nアプリを成長させる方針です。',
                   style: TextStyle(fontSize: 20),
                 ),
               ],

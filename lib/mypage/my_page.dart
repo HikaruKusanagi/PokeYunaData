@@ -40,93 +40,103 @@ class MyPage extends StatelessWidget {
               )],
             backgroundColor: Colors.orangeAccent,
           ),
-          body: Center(
-            child: Consumer<MyModel>(builder: (context, model, child) {
-              return Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Icon(EvaIcons.person,color: Colors.brown),Text('プレイヤーネーム'),
-                            SizedBox(width: 110),
-                            Text(model.name ??'ななし',style: TextStyle(fontWeight: FontWeight.bold,),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(EvaIcons.emailOutline,color: Colors.red),Text('Emailアドレス'),
-                            SizedBox(width: 110),
-                            Text(model.email ??'未入'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.catching_pokemon,color: Colors.deepOrangeAccent,),Text('よくつかうポケモン'),
-                            SizedBox(width: 80),
-                            Text(model.oftenUsePokemon ??'未入'),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.schedule,color: Colors.indigoAccent),
-                            Text('プレイする時間帯'),
-                            SizedBox(width: 120),
-                            Text(model.timeToPlay ??'未入'),
-                          ],
-                        ),
-                        TextButton(
-                          child: Text('ログアウト',style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20, color: Colors.red)),
-                          onPressed: () async {
-                            showDialog(
-                              context: context,
-                              builder: (_) {
-                                return AlertDialog(
-                                  title: Text('確認'),
-                                  content: Text('ログアウトしますか？'),
-                                  actions: [
-                                    TextButton(
-                                        child: Text('キャンセル'),
-                                        onPressed:(){
-                                          Navigator.of(context).pop();
-                                        }
-                                    ),
-                                    TextButton(
-                                        child: Text('OK'),
-                                        onPressed:() async {
-                                          await model.logout();
-                                          await Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BottomNavigationBarPage(),
-                                              ),
-                                                  (_) => false);
-                                        }
-                                    ),
-                                  ],
+          body: Container(
+            color: Colors.deepPurple,
+            child: Center(
+              child: Consumer<MyModel>(builder: (context, model, child) {
+                return Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(EvaIcons.person,size: 100, color: Colors.orangeAccent),
+                              ),
+                              Column(
+                                children: [
+                                  Text('プレイヤーネーム',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 28,color: Colors.white),),
+                                  Text(model.name ??'ななし',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.white),),
+                                ],
+                              ),
+                              SizedBox(width: 30),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(EvaIcons.emailOutline,color: Colors.red),Text('Emailアドレス',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                              SizedBox(width: 110),
+                              Text(model.email ??'未入',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.catching_pokemon,color: Colors.deepOrangeAccent,),Text('よくつかうポケモン',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                              SizedBox(width: 80),
+                              Text(model.oftenUsePokemon ??'未入',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.schedule,color: Colors.blue),
+                              Text('プレイする時間帯',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                              SizedBox(width: 120),
+                              Text(model.timeToPlay ??'未入',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                            ],
+                          ),
+                          TextButton(
+                            child: Text('ログアウト',style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20, color: Colors.red)),
+                            onPressed: () async {
+                              showDialog(
+                                context: context,
+                                builder: (_) {
+                                  return AlertDialog(
+                                    title: Text('確認'),
+                                    content: Text('ログアウトしますか？'),
+                                    actions: [
+                                      TextButton(
+                                          child: Text('キャンセル'),
+                                          onPressed:(){
+                                            Navigator.of(context).pop();
+                                          }
+                                      ),
+                                      TextButton(
+                                          child: Text('OK'),
+                                          onPressed:() async {
+                                            await model.logout();
+                                            await Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => BottomNavigationBarPage(),
+                                                ),
+                                                    (_) => false);
+                                          }
+                                      ),
+                                    ],
+                                  );
+                                }
                                 );
-                              }
-                              );
-                           },
-                        ),
-                      ]),
-                  ),
-                  if(model.isLoading)
-                    Container(
-                      color: Colors.black54,
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                             },
+                          ),
+                        ]),
                     ),
-                ],
-              );
-            }),
+                    if(model.isLoading)
+                      Container(
+                        color: Colors.black54,
+                        child: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                  ],
+                );
+              }),
       ),
+          ),
     ),
     );
   }

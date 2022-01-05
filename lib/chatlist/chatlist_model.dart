@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/domain/chat.dart';
 
-class ChatListModel extends ChangeNotifier {
+class OpenChatModel extends ChangeNotifier {
   List<Chat>? chat;
 
   String? name;
@@ -37,16 +37,6 @@ class ChatListModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void fetchTalkUser2(Comments comments) async {
-  //   FirebaseFirestore.instance
-  //       .collectionGroup('room')
-  //       .where('uid', isEqualTo: comments)
-  //       .orderBy('createdAt')
-  //       .snapshots();
-  //
-  //   notifyListeners();
-  // }
-
 
   Future addContent(String pokemonName) async {
     if (talk == null || talk == "") {
@@ -76,4 +66,3 @@ class ChatListModel extends ChangeNotifier {
     notifyListeners();
   }
 }
-
