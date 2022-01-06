@@ -58,7 +58,6 @@ class PokemonListPage extends StatelessWidget {
         body: Center(
           child: Consumer<PokemonListModel>(builder: (context, model, child) {
             final List<Pokemon>? pokemon = model.pokemon;
-
             if (pokemon == null) {
               return const CircularProgressIndicator();
             }
@@ -100,7 +99,7 @@ class PokemonListPage extends StatelessWidget {
                                     pokemon.coolTime,
                                     pokemon.features,
                                   ),
-                            )
+                            ),
                         );
                       }
                   ),

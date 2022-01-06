@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_app/contentuser/content_user_page.dart';
 import 'package:pokemon_app/domain/comments.dart';
 import 'package:pokemon_app/pokemondetail/pokemon_detail_page.model.dart';
-import 'package:pokemon_app/pokemondetail/waza_detail_page.dart';
 import 'package:pokemon_app/post/post_page.dart';
 import 'package:provider/provider.dart';
 
@@ -410,7 +409,7 @@ class PokemonDetailPage extends StatelessWidget {
                           ]),
                     ),
                 ),
-              ])
+              ]),
           ),
     ),
     );
