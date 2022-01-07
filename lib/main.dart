@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/bottomnavigationbar/bottom_navigation_bar.dart';
-import 'package:pokemon_app/login/login_page.dart';
-import 'package:pokemon_app/singup/singup_page.dart';
+
 
 
 void main() async {

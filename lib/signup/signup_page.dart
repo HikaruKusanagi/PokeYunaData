@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_app/singup/singup_model.dart';
+import 'package:pokemon_app/signup/signup_model.dart';
 import 'package:provider/provider.dart';
 
-class SingUpPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<SingUpPageModel>(
-      create: (_) => SingUpPageModel(),
+    return ChangeNotifierProvider<SignUpPageModel>(
+      create: (_) => SignUpPageModel(),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.orangeAccent,
@@ -19,7 +19,7 @@ class SingUpPage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Consumer<SingUpPageModel>(builder: (context, model, child) {
+          child: Consumer<SignUpPageModel>(builder: (context, model, child) {
             return Stack(
               children: [
                 Padding(

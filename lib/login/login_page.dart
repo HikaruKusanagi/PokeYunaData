@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/login/login_model.dart';
-import 'package:pokemon_app/singup/singup_page.dart';
+import 'package:pokemon_app/signup/signup_page.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SingUpPage(),
+                              builder: (context) => SignUpPage(),
                               fullscreenDialog: true,
                             ),
                           );
