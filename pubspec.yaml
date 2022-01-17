@@ -62,5 +62,5 @@ flutter:
   uses-material-design: true
   assets:
     - images/アプリアイコン.png
-    - assets/ポケモンデータ詳細.png
+    - assets/ポケモン.png
 

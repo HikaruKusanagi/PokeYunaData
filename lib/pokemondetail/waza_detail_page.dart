@@ -47,7 +47,6 @@ class WazaPage1 extends StatelessWidget {
                       ),
                     ],
                   ),
-
                 ],
               ),
             ],

@@ -60,18 +60,6 @@ class SignUpPageModel extends ChangeNotifier {
           'oftenUsePokemon': oftenUsePokemon,
         });
       }
-      // if (user != null) {
-      //   final uid = user.uid;
-      //
-      //   // firestoreに追加
-      //   FirebaseFirestore.instance.collection('comments').add
-      //   ({
-      //     'uid': uid,
-      //     'name': name,
-      //     'pokemonId': pokemonId,
-      //     'content': content,
-      //   });
-      // }
     }
   }
 }

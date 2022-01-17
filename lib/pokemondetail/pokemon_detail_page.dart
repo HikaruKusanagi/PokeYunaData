@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_app/contentuser/content_user_page.dart';
 import 'package:pokemon_app/domain/comments.dart';
 import 'package:pokemon_app/pokemondetail/pokemon_detail_page.model.dart';
+import 'package:pokemon_app/pokemondetail/waza_detail_page.dart';
 import 'package:pokemon_app/post/post_page.dart';
 import 'package:provider/provider.dart';
 
@@ -143,7 +144,8 @@ class PokemonDetailPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.orangeAccent,
                           ),
-                          child: Text(battleStyle,
+                          child: Text(
+                            battleStyle,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),
@@ -160,7 +162,8 @@ class PokemonDetailPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.orangeAccent,
                           ),
-                          child: Text(classificationOfTechniques,
+                          child: Text(
+                            classificationOfTechniques,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),),
@@ -176,7 +179,8 @@ class PokemonDetailPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10),
                             color: Colors.orangeAccent,
                           ),
-                          child: Text(characteristic,
+                          child: Text(
+                            characteristic,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20),
@@ -187,150 +191,150 @@ class PokemonDetailPage extends StatelessWidget {
                   ],
                 ),
                 //アップデートで追加予定
-                // Row(
-                //   children: const [
-                //     Text(
-                //       'わざセット1',
-                //       style: TextStyle(fontSize: 20),
-                //     ),
-                //   ],
-                // ),
-                // Container(
-                //   color: Colors.orange,
-                //   child: DefaultTabController(
-                //     length: 3,
-                //     child: Column(
-                //       children: [
-                //         //わざセット１のタブ
-                //         TabBar(
-                //           labelColor: Colors.black,
-                //           indicatorColor: Colors.black,
-                //           tabs: [
-                //             Tab(text: techniqueSet1),
-                //             Tab(text: techniqueSet1no2),
-                //             Tab(text: techniqueSet1no3.replaceAll('\\n', '\n'),),
-                //           ],
-                //         ),
-                //         SizedBox(
-                //           height: 120,
-                //           width: 500,
-                //           //わざセット１技テキスト画面
-                //           child: TabBarView(
-                //             children: [
-                //               WazaPage1(
-                //                 damagelv1:techniqueText1.replaceAll('\\n', '\n'),
-                //                 damagelv2:'',
-                //                 damagelv3:'',
-                //               ),
-                //               WazaPage1A(
-                //                 damage1lv4:techniqueText2.replaceAll('\\n', '\n'),
-                //                 damage1lv5:'',
-                //                 damage1lv6:'',
-                //               ),
-                //               WazaPage1B(
-                //                 damage4:techniqueText3.replaceAll('\\n', '\n'),
-                //                 damage3lv5:'',
-                //                 damage3lv6:'',
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Row(
-                //   children: const [
-                //     Text(
-                //       'わざセット2',
-                //       style: TextStyle(fontSize: 20),
-                //     ),
-                //   ],
-                // ),
-                // Container(
-                //   color: Colors.orange,
-                //   child: DefaultTabController(
-                //     length: 3,
-                //     child: Column(
-                //       children: [
-                //         TabBar(
-                //           labelColor: Colors.black,
-                //           indicatorColor: Colors.black,
-                //           tabs: [
-                //             Tab(text: techniqueSet2),
-                //             Tab(text: techniqueSet2no2),
-                //             Tab(text: techniqueSet2no3),
-                //           ],
-                //         ),
-                //         SizedBox(
-                //           height: 120,
-                //           width: 500,
-                //           child: TabBarView(
-                //             children: [
-                //               WazaPage2(
-                //                 damage6lv1: techniqueText4.replaceAll('\\n', '\n'),
-                //                 damage6lv2:'',
-                //                 damage6lv3:'',
-                //               ),
-                //               WazaPage2A(
-                //                 damage7lv4: techniqueText5.replaceAll('\\n', '\n'),
-                //                 damage7lv5:'',
-                //                 damage7lv6:'',
-                //               ),
-                //               WazaPage2B(
-                //                 damage9lv6: techniqueText6.replaceAll('\\n', '\n'),
-                //                 damage9lv7:'',
-                //                 damage9lv8:'',
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
-                // Row(
-                //   children: const [
-                //     Text(
-                //       'ユナイトわざ',
-                //       style: TextStyle(fontSize: 20),
-                //     ),
-                //   ],
-                // ),
-                // Container(
-                //   color: Colors.orange,
-                //   child: DefaultTabController(
-                //     length: 1,
-                //     child: Column(
-                //       children: [
-                //         TabBar(
-                //           labelColor: Colors.black,
-                //           indicatorColor: Colors.black,
-                //           tabs: [
-                //             Row(
-                //               children: [
-                //                 Tab(text: uniteTechnique,
-                //                 ) ],
-                //             ),
-                //           ],
-                //         ),
-                //         SizedBox(
-                //           height: 120,
-                //           width: 500,
-                //           child: TabBarView(
-                //             children: [
-                //               UniteWazaPage(
-                //                 damage10lv9: uniteTechniqueText.replaceAll('\\n', '\n'),
-                //                 damage10lv10:'',
-                //                 damage10lv11:features,
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
+                Row(
+                  children: const [
+                    Text(
+                      'わざセット1',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+                Container(
+                  color: Colors.orange,
+                  child: DefaultTabController(
+                    length: 3,
+                    child: Column(
+                      children: [
+                        //わざセット１のタブ
+                        TabBar(
+                          labelColor: Colors.black,
+                          indicatorColor: Colors.black,
+                          tabs: [
+                            Tab(text: techniqueSet1),
+                            Tab(text: techniqueSet1no2),
+                            Tab(text: techniqueSet1no3.replaceAll('\\n', '\n'),),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 120,
+                          width: 500,
+                          //わざセット１技テキスト画面
+                          child: TabBarView(
+                            children: [
+                              WazaPage1(
+                                damagelv1:techniqueText1.replaceAll('\\n', '\n'),
+                                damagelv2:'',
+                                damagelv3:'',
+                              ),
+                              WazaPage1A(
+                                damage1lv4:techniqueText2.replaceAll('\\n', '\n'),
+                                damage1lv5:'',
+                                damage1lv6:'',
+                              ),
+                              WazaPage1B(
+                                damage4:techniqueText3.replaceAll('\\n', '\n'),
+                                damage3lv5:'',
+                                damage3lv6:'',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'わざセット2',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+                Container(
+                  color: Colors.orange,
+                  child: DefaultTabController(
+                    length: 3,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          labelColor: Colors.black,
+                          indicatorColor: Colors.black,
+                          tabs: [
+                            Tab(text: techniqueSet2),
+                            Tab(text: techniqueSet2no2),
+                            Tab(text: techniqueSet2no3),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 120,
+                          width: 500,
+                          child: TabBarView(
+                            children: [
+                              WazaPage2(
+                                damage6lv1: techniqueText4.replaceAll('\\n', '\n'),
+                                damage6lv2:'',
+                                damage6lv3:'',
+                              ),
+                              WazaPage2A(
+                                damage7lv4: techniqueText5.replaceAll('\\n', '\n'),
+                                damage7lv5:'',
+                                damage7lv6:'',
+                              ),
+                              WazaPage2B(
+                                damage9lv6: techniqueText6.replaceAll('\\n', '\n'),
+                                damage9lv7:'',
+                                damage9lv8:'',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  children: const [
+                    Text(
+                      'ユナイトわざ',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+                Container(
+                  color: Colors.orange,
+                  child: DefaultTabController(
+                    length: 1,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          labelColor: Colors.black,
+                          indicatorColor: Colors.black,
+                          tabs: [
+                            Row(
+                              children: [
+                                Tab(text: uniteTechnique,
+                                ) ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 120,
+                          width: 500,
+                          child: TabBarView(
+                            children: [
+                              UniteWazaPage(
+                                damage10lv9: uniteTechniqueText.replaceAll('\\n', '\n'),
+                                damage10lv10:'',
+                                damage10lv11:features,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Row(
                   children: const [
                     Text('みんなの投稿',

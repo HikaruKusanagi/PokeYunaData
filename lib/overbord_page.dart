@@ -33,7 +33,7 @@ class OverboardPage extends StatelessWidget {
         doAnimateImage: true),
     PageModel(
         color: Colors.deepPurple,
-        imageAssetPath: 'assets/ポケモンデータ詳細.png',
+        imageAssetPath: 'assets/ポケモン.png',
         title: 'コンセプト',
         body: 'ゲームに登場する\n全ての基礎データを\n即座に確認可能！',
         doAnimateImage: true),
