@@ -17,17 +17,4 @@ class BottomNavigationBarModel extends ChangeNotifier {
     notifyListeners();
 
   }
-
-  void fetchUser() async {
-    final user = FirebaseAuth.instance.currentUser;
-    this.email = user?.email;
-
-    final uid = FirebaseAuth.instance.currentUser!.uid;
-    final snapshot =
-    await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    final data = snapshot.data();
-    this.name = data?['name'];
-
-    notifyListeners();
-  }
 }

@@ -12,7 +12,12 @@ class NotificationPage extends StatelessWidget {
           flexibleSpace: Container(
             decoration: const BoxDecoration(),
           ),
-          title: const Text('お知らせ'),
+          title: const Text('お知らせ',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.white),
+          ),
           centerTitle: false,
         ),
         body: Column(

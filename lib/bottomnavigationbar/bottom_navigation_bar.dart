@@ -1,20 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemon_app/bottomnavigationbar/bottom_navigation_bar_model.dart';
-import 'package:pokemon_app/login/login_page.dart';
-import 'package:pokemon_app/mypage/my_page.dart';
 import 'package:pokemon_app/notification/notification_page.dart';
 import 'package:pokemon_app/overbord_page.dart';
 import 'package:pokemon_app/pokemonlist/pokemon_list_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
-
 class BottomNavigationBarPage extends StatelessWidget {
-
-
 
   final currentTab = [
     PokemonListPage(),
@@ -38,39 +30,12 @@ class BottomNavigationBarPage extends StatelessWidget {
           fontSize: 20,
           color:Colors.white),
           ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (FirebaseAuth.instance.currentUser != null) {
-                  //ログインしている状態
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MyPage(),
-                      fullscreenDialog: true,
-                    ),
-                  );
-                } else {
-                  //ログインしていない状態
-                  await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginPage(),
-                      fullscreenDialog: true,
-                    ),
-                  );
-                }
-                },
-              icon: Icon(Icons.person),
-            )],
           flexibleSpace: Container(
             decoration: const BoxDecoration(
             ),
           ),
           centerTitle: true,
         ),
-
-
         //currentIndex:現在、選択されているindex。このindexのアイコンが選択状態になる
         body: currentTab[model.currentIndex],
         bottomNavigationBar: BottomNavigationBar(

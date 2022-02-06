@@ -49,7 +49,6 @@ flutter_icons:
 flutter_native_splash:
   image: "images/スプラッシュ画面.png"
   color: "#8C52FF"
-  fullscreen: false
 
 
 
